@@ -1,6 +1,6 @@
 import { it, expect } from "vitest";
-import { MakeUser } from "./make-user";
-import { CreateUser } from "../../domain/services/create-user";
+import { MakeUser } from "./factories/make-user";
+import { CreateUser } from "../domain/services/create-user";
 
 it("should created a User", () => {
   const newUser = MakeUser();
@@ -12,17 +12,13 @@ it("should created a User", () => {
 });
 
 it("should created a specific User", () => {
-
   const userData = {
     name: "Lucas",
     email: "lucas@gmail.com",
     phoneNumber: "1191234-5678",
   };
 
-
-  const newUser = new CreateUser().execute({
-    ...userData,
-  });
+  const newUser = new CreateUser().execute(userData);
 
   expect(newUser.name).toBe("Lucas");
   expect(newUser.email).toBe("lucas@gmail.com");

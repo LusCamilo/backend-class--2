@@ -1,6 +1,6 @@
 import { it, expect } from "vitest";
-import { MakeOrder } from "./make-order";
-import { CreateOrder } from "../../domain/services/create-order";
+import { MakeOrder } from "./factories/make-order";
+import { CreateOrder } from "../domain/services/create-order";
 
 it("should created a order", () => {
   const newOrder = MakeOrder();
@@ -17,9 +17,7 @@ it("should created a specific order", () => {
     userId: "2",
   };
 
-  const newOrder = new CreateOrder().execute({
-    ...orderData,
-  });
+  const newOrder = new CreateOrder().execute(orderData);
 
   expect(newOrder.bookId).toBe("1");
   expect(newOrder.userId).toBe("2");

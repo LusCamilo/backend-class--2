@@ -1,5 +1,5 @@
-import { CreateBook } from "../../domain/services/create-book";
-import { MakeBook } from "../factories/make-book";
+import { CreateBook } from "../domain/services/create-book";
+import { MakeBook } from "./factories/make-book";
 import { it, expect } from "vitest";
 
 it("should created a book", () => {
@@ -20,9 +20,7 @@ it("should created a specific book", () => {
     price: 10.0,
   };
 
-  const newBook = new CreateBook().execute({
-    ...bookData,
-  });
+  const newBook = new CreateBook().execute(bookData);
 
   expect(newBook.name).toBe("clean code");
   expect(newBook.description).toBe("livro de programação");
